@@ -4,7 +4,7 @@ data class DataItem(val viewType: Int) {
     var recylerItemList : List<RecyclerItem0>? = null
     var banner: BannerView1 ? = null
     var section : Section? = null
-    var ListItem : List<ListItem24>? = null
+    var ListItem : List<RecyclerItem0>? = null
 
     constructor(viewType: Int, recylerItemList:List<RecyclerItem0>) : this(viewType){
         this.recylerItemList = recylerItemList
@@ -18,9 +18,9 @@ data class DataItem(val viewType: Int) {
         this.section = section
     }
 
-    constructor(viewType: Int, listItem:List<ListItem24>) : this(viewType) {
-        this.ListItem = listItem
-    }
+//    constructor(viewType: Int, listItem:List<ListItem24>) : this(viewType) {
+//        this.ListItem = listItem
+//    }
 
 }
 
@@ -30,4 +30,4 @@ data class BannerView1 ( val Image : Int)
 
 data class Section ( val DescLanjut: String)
 
-data class ListItem24 ( val Image: Int, val Teks: String)
+//data class ListItem24 ( val Image: Int, val Teks: String)

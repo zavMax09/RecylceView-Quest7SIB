@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import id.androiddev.quest7_recyclerview.DataClass.BannerView1
 import id.androiddev.quest7_recyclerview.DataClass.DataItem
-import id.androiddev.quest7_recyclerview.DataClass.ListItem24
+
 import id.androiddev.quest7_recyclerview.DataClass.RecyclerItem0
 import id.androiddev.quest7_recyclerview.DataClass.Section
 import id.androiddev.quest7_recyclerview.DataTipe.DataItemType
@@ -33,11 +33,15 @@ class MainAdapter(private val dataItemList: List<DataItem> ):RecyclerView.Adapte
                 LinearLayoutManager(binding.root.context, RecyclerView.HORIZONTAL,false)
         }
 
-        fun bindListItemRecyclerView(ListItem: List<ListItem24>) {
+        fun bindListItemRecyclerView(recycleItemList: List<RecyclerItem0>) {
+            val adapter = ChildAdapter(DataItemType.LIST_ITEM, recycleItemList)
+            binding.childRecyclerView.adapter = adapter
 
         }
 
-        fun bindListPhoneView(ListItem: List<ListItem24>) {
+        fun bindListPhoneView(recycleItemList: List<RecyclerItem0>) {
+            val adapter = ChildAdapter(DataItemType.LIST_VIEWHP, recycleItemList)
+            binding.childRecyclerView.adapter = adapter
 
         }
 
@@ -55,11 +59,11 @@ class MainAdapter(private val dataItemList: List<DataItem> ):RecyclerView.Adapte
     }
 
 
-    inner class SectionViewHolder(private val binding: SectionLayoutBinding) : RecyclerView.ViewHolder(binding.root){
-        fun SectionView(section: Section) {
-            binding.textSection.text
-        }
-    }
+//    inner class SectionViewHolder(private val binding: SectionLayoutBinding) : RecyclerView.ViewHolder(binding.root){
+//        fun SectionView(section: Section) {
+//            binding.textSection.text
+//        }
+//    }
 
     inner class ListItemViewHolder(private val binding: ListappItemBinding) : RecyclerView.ViewHolder(binding.root) {
     }
@@ -91,7 +95,7 @@ class MainAdapter(private val dataItemList: List<DataItem> ):RecyclerView.Adapte
             else -> {
                 when (dataItemList[position].viewType) {
                     DataItemType.CARDVIEW_TV -> {
-                        dataItemList[position].ListItem?.let {
+                        dataItemList[position].recylerItemList?.let {
                             (holder as RecyclerItemViewHolder).bindListItemRecyclerView(
                                 it
                             )
@@ -99,7 +103,7 @@ class MainAdapter(private val dataItemList: List<DataItem> ):RecyclerView.Adapte
                     }
 
                     else -> {
-                        dataItemList[position].ListItem?.let {
+                        dataItemList[position].recylerItemList?.let {
                             (holder as RecyclerItemViewHolder).bindListPhoneView(
                                 it
                             )
